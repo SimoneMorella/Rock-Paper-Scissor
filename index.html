@@ -4,8 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <header>
+        <div class="title">
+            <span class="rock">ROCK</span>      
+            <span class="paper">PAPER</span>     
+            <span class="scissor">SCISSOR</span>     
+        </div>
+        <div class="subtitle">
+            Can you win this game?
+        </div>
+    </header>
+    <div class="gameOver"></div>
+    <div class="result"></div>
+    <div class="btn-row">
+        <button class="game" id="Rock">
+            <img src="img/therock.png" alt="rock">
+            Rock
+        </button>
+        <button class="game" id="Paper">
+            <img src="img/paper.png" alt="paper">
+            Paper
+        </button>
+        <button class="game" id="Scissor">
+            <img src="img/scissors.png" alt="scissor">
+            Scissor
+        </button>
+    </div>
+    <footer>
+        <button class="reset" disabled>Reset Game</button>
+    </footer>
     <script src="script.js"></script>
 </body>
 </html>

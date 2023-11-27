@@ -1,4 +1,12 @@
 // this can be done better with an array and array.length 
+let playerScore = 0;
+let cpuScore = 0;
+
+const btns = document.querySelectorAll(".game");
+const result = document.querySelector(".result");
+const final = document.querySelector(".gameOver");
+const reset = document.querySelector(".reset");
+
 function getComputerChoice() {
     const choice_num = Math.floor(Math.random() * 3);
     switch (choice_num) {
@@ -15,66 +23,103 @@ function playRound(playerSelection, computerSelection) {
     const player_choice = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1);
     if (player_choice === "Rock") {
         if (computerSelection === "Rock") {
+            result.style.color = '#333333';
             return `Tie! ${player_choice} ties with ${computerSelection}`;
         }
         else if (computerSelection === "Paper") {
+            cpuScore++;
+            result.setAttribute('style', 'color: #e74c3c;');
             return `You lose! ${computerSelection} beats ${player_choice}`;
         }
 
         else {
+            playerScore++;
+            result.style.color = '#2ecc71';
             return `You win! ${player_choice} wins over ${computerSelection}`;
         }
     }
     else if (player_choice === "Paper") {
         if (computerSelection === "Paper") {
+            result.style.color = '#333333';
             return `Tie! ${player_choice} ties with ${computerSelection}`;
         }
         else if (computerSelection === "Scissor") {
+            cpuScore++;
+            result.setAttribute('style', 'color: #e74c3c;');
             return `You lose! ${computerSelection} beats ${player_choice}`;
         }
 
         else {
+            playerScore++;
+            result.style.color = '#2ecc71';
             return `You win! ${player_choice} wins over ${computerSelection}`;
         }
     }
     if (player_choice === "Scissor") {
         if (computerSelection === "Scissor") {
+            result.style.color = '#333333';
             return `Tie! ${player_choice} ties with ${computerSelection}`;
         }
         else if (computerSelection === "Rock") {
+            cpuScore++;
+            result.setAttribute('style', 'color: #e74c3c;');
             return `You lose! ${computerSelection} beats ${player_choice}`;
         }
 
         else {
+            playerScore++;
+            result.style.color = '#2ecc71';
             return `You win! ${player_choice} wins over ${computerSelection}`;
         }
     }
 }
 
-function game() {
-    let player_score = 0;
-    let computer_score = 0;
-    for(let i = 1; i <= 5; i++) {
-        let player = prompt("Chose: Rock, Paper or Scissor.");
-        let result = playRound(player, getComputerChoice());
-        console.log(result);
-        if (result.includes("win")) {
-            player_score++;
-        }
-        else if (result.includes("lose")) {
-            computer_score++;
-        }
-    }
-    if (player_score > computer_score) {
-        console.log(`Player wins! ${player_score} vs ${computer_score}`);
-    }
-    else if (computer_score > player_score) {
-        console.log(`Computer wins and player lose! ${player_score} vs ${computer_score}`);
-    }
-    else {
-        console.log(`Tie! ${player_score} vs ${computer_score}`);
-    }
-    
-}
+function gameOver() {
+     if (playerScore > cpuScore) {
+         endGame();
+         final.style.color = '#2ecc71';
+         return(`Player wins! \n${playerScore} vs ${cpuScore}`);
+     }
+     else if (cpuScore > playerScore) {
+         endGame();
+         final.style.color = '#e74c3c';
+         return(`Computer wins! \n${playerScore} vs ${cpuScore}`);
+     }
 
-game();
+ }
+
+ function endGame() {
+    btns.forEach((btn) => {
+        btn.disabled = true;
+    })
+    reset.disabled = false;
+    reset.style.cursor = 'pointer';
+    reset.addEventListener('click', resetGame)
+ }
+
+ function resetGame() {
+    playerScore = 0;
+    cpuScore = 0;
+    result.textContent = '';
+    final.textContent = '';
+
+    btns.forEach((btn) => {
+        btn.disabled = false;
+    })
+    reset.style.cursor = 'auto';
+    reset.disabled = true;
+
+ }
+
+
+btns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+        if (playerScore < 5 && cpuScore < 5) {
+            console.log(btn.id);
+            result.textContent = playRound(btn.id, getComputerChoice());
+        }
+        else {
+            final.textContent = gameOver()
+        }
+    })
+} )
