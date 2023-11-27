@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     font-family: 'Press Start 2P', cursive;
+    border: 2px solid brown;
     color: #333333;
 }
 
@@ -20,7 +21,7 @@ header {
 }
 
 header .title {
-    font-size: 37px;
+    font-size: 42px;
     margin-bottom: 16px;
 }
 
@@ -38,28 +39,29 @@ header .title .scissor {
 header .subtitle {
     display: flex;
     justify-content: center;
-    font-size: 22px;
+    font-size: 26px;
 }
 
 .btn-row {
     display: flex;
-    gap: 72px;
-    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-evenly;
+
 }
 
 .btn-row img {
-    width: 80px;
-    height: 90px;
+    width: 40%;
+    height: 60%;
 }
 
 .btn-row .game {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: space-evenly;
     gap: 8px;
     width: 300px;
-    padding: 25px;
+    padding: 20px;
     font-size: 18px;
     box-shadow:   
     -7px 0 0 0 #333333,
@@ -88,12 +90,12 @@ header .subtitle {
 }
 
 .gameOver {
-    height: 40px;
+    height: 4%;
     font-size: 35px;
 }
 
 .result {
-    height: 30px;
+    height: 3%;
     font-size: 25px;
 }
 
@@ -111,4 +113,115 @@ footer .reset {
     background-color: #2c3e5024;
 }
 
+@media (max-width: 982px) {
+    header .title {
+        font-size: 34px;
+    }
+    
+    header .subtitle {
+        font-size: 18px;
+    }
+
+    .gameOver {
+        font-size: 27px;
+    }
+
+    .result {
+        font-size: 17px;
+    }
+
+    .btn-row .game {
+        font-size: 17px;
+        width: 180px;
+        padding: 14px;
+    }
+
+    footer .reset {
+        padding: 10px;
+    }
+}
+
+@media (max-width: 652px) {
+    header .title {
+        font-size: 30px;
+    }
+    
+    header .subtitle {
+        font-size: 14px;
+    }
+
+    .gameOver {
+        font-size: 23px;
+    }
+
+    .result {
+        font-size: 14px;
+    }
+
+    .btn-row .game {
+        font-size: 14px;
+        width: 140px;
+        padding: 10px;
+    }
+
+    footer .reset {
+        padding: 6px;
+    }
+}
+
+@media (max-width: 568px) {
+    header .title {
+        font-size: 24px;
+    }
+    
+    header .subtitle {
+        font-size: 12px;
+    }
+
+    .gameOver {
+        font-size: 17px;
+    }
+
+    .result {
+        font-size: 12px;
+    }
+
+    .btn-row .game {
+        font-size: 8px;
+        width: 100px;
+        padding: 5px;
+    }
+
+    footer .reset {
+        padding: 3px;
+    }
+}
+
+@media (max-width: 460px) {
+    header .title {
+        font-size: 16px;
+    }
+    
+    header .subtitle {
+        font-size: 8px;
+    }
+
+    .gameOver {
+        font-size: 13px;
+    }
+
+    .result {
+        font-size: 8px;
+    }
+
+    .btn-row .game {
+        font-size: 7px;
+        width: 90px;
+        padding: 4px;
+    }
+
+    footer .reset {
+        padding: 3px;
+    }
+}
 
